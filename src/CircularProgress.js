@@ -39,8 +39,8 @@ export default class CircularProgress extends React.Component {
     const counterClockwisePath = (counterClockwise) ? 1 : 0;
     const fill = this.extractFill(this.props.fill, counterClockwisePath);
     const backgroundFill = (counterClockwise) ? 100 : -100;
-    const backgroundPath = this.circlePath(size / 2, size / 2, size / 2 - width / 2, 0, (360 * .9999) * backgroundFill / 100, counterClockwisePath);
-    const circlePath = this.circlePath(size / 2, size / 2, size / 2 - width / 2, 0, (360 * .9999) * fill / 100, counterClockwisePath);
+    const backgroundPath = this.circlePath(size / 2, size / 2, size / 2 - width / 2 - 4, 0, (360 * .9999) * backgroundFill / 100, counterClockwisePath);
+    const circlePath = this.circlePath(size / 2, size / 2, size / 2 - width / 2 - 4, 0, (360 * .9999) * fill / 100, counterClockwisePath);
     const offset = size - (width * 2);
 
     const childContainerStyle = {
