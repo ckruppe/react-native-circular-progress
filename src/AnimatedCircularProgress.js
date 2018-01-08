@@ -72,12 +72,33 @@ export default class AnimatedCircularProgress extends React.Component {
     }).start(onLinearAnimationComplete);
   }
 
+  getColor(startColor, endColor, tintColor) {
+    if (startColor && endColor) {
+      return this.state.chartFillAnimation.interpolate(
+        {
+          inputRange: [0, 100],
+          outputRange: [startColor, endColor]
+        }
+      );
+    }
+
+    return tintColor;
+  }
+
   render() {
-    const { fill, prefill, ...other } = this.props;
+    const { fill, prefill, startColor, endColor, tintColor, ...other } = this.props;
+
+    let animatedColor = this.state.chartFillAnimation.interpolate(
+        {
+            inputRange: [0, 100],
+            outputRange: [startColor, endColor]
+        }
+    )
 
     return (
       <AnimatedProgress
         {...other}
+        tintColor={this.getColor(startColor, endColor, tintColor)}
         fill={this.state.chartFillAnimation}
         />
     )
